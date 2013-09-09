@@ -18,34 +18,23 @@
 //= require_tree .
 //= require announcements
 
-$(document).ready(function(){
+$(document).ready(function()
+{
 	
-    $('#audio_list').dataTable({        		
-                  
-		          
-
-      
-          
+    $('#audio_list').dataTable({   		
+       
       "sPaginationType": "full_numbers",
        "iDisplayLength": 25,
         "aLengthMenu": [5,10,15,25, 50, 100, 150],
          "aaSorting": [] ,
-          "oLanguage": {
-                 
-                  
-    "sSearch":"Gunnus :"
+          "oLanguage": 
+          {  
+          	"sSearch":"Gunnus :"
     
-            }
-                  
-                   
-    
-    } );
+          }
+   } );
+   
   $('#audio_edit').dataTable({           
-                  
-              
-
-
-      
           
           "sPaginationType": "full_numbers",
           "iDisplayLength": 15,
@@ -56,12 +45,9 @@ $(document).ready(function(){
           //   "sInfo": "Displaying _START_ to _END_ of _TOTAL_ records",
           //   "sInfoEmpty": "Showingo 0 to 0 of 0 records",
           //   "sInfoFiltered": "(filtered from _MAX_ total records)"
-                  
-                   
-    
+       
     } );
   
-
 } );
 
-$(function(){ $(document).foundation(); });
+
