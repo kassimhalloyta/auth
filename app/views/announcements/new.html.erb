@@ -1,0 +1,14 @@
+<h1>Announcements#new</h1>
+<%= form_for @announcement, :url => announcements_path do |form| %>
+
+
+ <div class="field" >
+      <%= form.label :body  %>: Ahak gubal farmo rubta aktub<br/>
+      <%= form.text_area :body ,:cols => "53", :rows => "12" %><br/>
+    </div>
+  
+  
+  <%= form.submit "Rub / Send / Envoie" %>
+
+</div>
+<% end %>

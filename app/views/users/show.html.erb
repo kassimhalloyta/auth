@@ -1,0 +1,67 @@
+ <%= render 'publishers/head' %>
+<p id="notice"><%= notice %></p>
+  
+    
+       <center><b>Your Profil </b></center>
+  <p style="font-size: 16px;">  <b>Username :</b>
+  <%=  @user.username %>
+  </p>
+   
+  <p style="font-size: 16px;">  <b>Email :</b>
+  <%= @user.email %>
+  </p>
+  <p style="font-size: 16px;">  <b>Numbers of Uploaded songs:</b>
+  <%= Publisher.where(:user_id => @user.id).count %>
+  </p>
+  <p style="font-size: 16px;">  <b>Registred since :</b>
+     <%= @user.created_at %>
+  </p>
+  <%= link_to 'Edit Your Profil', edit_user_path(@user) %>
+  </p>
+   
+ <%= link_to 'Back', publishers_path %>
+
+
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+ 
+ <% @user_uploads = Publisher.where(:user_id => @user.id).count %>
+ <% if @user_uploads > 0 %>
+
+<table id="audio_edit">
+  <thead>
+     <tr>
+       <th>Nr </th>
+       <th>Title</th>
+       <th>Artist</th>
+       <th>Created At</th>
+       <th>Published by</th>
+       <th></th>    
+      </tr>
+  </thead>
+<tbody>
+<% @publishers.each do |publisher| %>
+<tr>
+    <td><%=  publisher.id  %></td>
+    <td><%=  publisher.title  %></td>  
+    <td><%= publisher.content %></td>
+    <td><%= l publisher.created_at ,:format => :sample %></td>
+    <% username=User.where(:id => publisher.user_id) %>   
+    <% username.each do |name| %>    
+    <td><%= link_to name.username%>
+      (<%= total=Publisher.where(:user_id => name.id).count %>)</td>
+    <td> 
+        
+     <%= link_to 'Edit',  edit_publisher_path(publisher)  %> 
+     </td>  
+        
+    <% end %>    
+  </tr> 
+  <% end %>
+  </tbody>
+</table>
+<% end %>
+<br />
+</div>

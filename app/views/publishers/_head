@@ -1,0 +1,36 @@
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <%= link_to (image_tag("logo.png")) %>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+    <% if current_user %>
+    
+       
+    <li class="divider"></li>
+      <li>
+      <% @user = current_user %> 
+        <%=link_to   "Unkaq ..." + current_user.username  , :controller => "users", :action => "show", :id => @user
+        %>
+      </li>
+      <li class="divider"></li>
+      <li><%= link_to "Log out", log_out_path %> </li>
+    <% else %>
+    <li class="divider"></li>
+      <li><%= link_to "Register Now", sign_up_path %> %>
+
+      </li>
+      <li class="divider"></li>
+      <li><%= link_to "Log in", log_in_path %></li>
+     
+    <% end %>
+      
+    </ul>
+  </div>
+</nav>
+
+
+
+

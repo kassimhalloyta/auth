@@ -1,0 +1,43 @@
+<div id="myform">
+<%= form_for @publisher, :html => { :multipart => true } ,:validate => true do |f| %>
+  <% if @publisher.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@publisher.errors.count, "error ") %> : Gad kah Qulluume weemih sabab </h2>
+      
+      <ul>
+      <% @publisher.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+
+  <div class="field">
+      <label > </label><br />  <br />
+    <%= f.file_field :audio %>
+    <br />
+    <br />
+    <%= f.label :title  , title: "Gaddi migaq aktub " , data: {tooltip: true}%> : Gaddi migaq aktub<br />
+    <%= f.text_field :title %>
+  </div>
+  <br />
+  <div class="field">
+    <label> Artist : Gad abe migaq aktub</label><br />
+    <%= f.text_field :content %>
+  </div>
+   <div class="field">
+   <%= f.label :user_id  %><br />    
+   <%= select("publisher", "user_id", User.where('id' => current_user.id).collect {|p| [ p.email, p.id ] },
+    {:index => nil}
+    ) %>
+  </div>
+    <br />
+  <div class="actions" id="sub">
+    <%= f.submit  ' Gad Qul / Upload' , :confirm => "Gaddi qulma diggossa ?" , :disable_with => ' Gad Qullumahak ...Qambaala  , Loading... Please wait . Veillez attendre...', :remote => true %>
+  </div>
+<% end %>
+
+</div>
+

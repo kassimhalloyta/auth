@@ -1,0 +1,38 @@
+<%= render 'publishers/head' %>
+   
+ <br/>
+ <br/>
+ <br/>
+
+
+<%= form_for @message, :url => contact_path do |form| %>
+  
+    <div class="field">
+      <%= form.label :name %> : Isi Migaq aktub<br/>
+      <%= form.text_field :name %><br/>
+    </div>
+    
+    <div class="field">
+      <%= form.label :email %> : Isi email aktub<br/>
+      <%= form.text_field :email %><br/>
+    </div>
+    <div class="field">
+      <%= form.label :subject %> : Kinni hadaf aktub<br/>
+      <%= form.text_field :subject %><br/>
+    </div>
+    
+    <div class="field" >
+      <%= form.label :message  %>: Ahak gubal farmo rubta aktub<br/>
+      <%= form.text_area :body ,:cols => "53", :rows => "12" %><br/>
+    </div>
+  
+  
+  
+<br />
+    <%= form.submit "Rub / Send / Envoie" %>
+  
+<% end %>
+<br />
+<%= link_to 'Back', publishers_path %>
+
+<%= render 'publishers/bottom' %>

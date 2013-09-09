@@ -1,0 +1,53 @@
+	 <div class="head">
+   <%= render 'head' %>
+   </div>
+ <br/>
+ <br/>
+ <br/>
+ <br/>
+
+ <center>
+  <div id='sisa'>
+ <%= render 'media' %>
+ </div>
+ </center> 
+ 
+ <br />
+ <br />
+ <br/>
+<div class="large-6 columns">
+<table id="audio_list">
+  <thead>
+     <tr>
+       <th>Nr </th>
+       <th>Title</th>
+       <th>Artist</th>
+       <th>Created At</th>
+       <th>Published by</th>
+       <th></th>    
+      </tr>
+  </thead>
+<% @publishers.each do |publisher| %>
+<tr>
+    <td><%=  publisher.id  %></td>
+    <td><%=  publisher.title  %></td>  
+    <td><%= publisher.content %></td>
+    <td><%= l publisher.created_at ,:format => :sample %></td>
+      
+   
+    <td><%= link_to  publisher.user.username %>
+     (<%=  publisher.user.publishers_count%>)
+     </td>
+    <td>     
+     <%= link_to 'Play',  publisher ,:remote => true  %>  
+    
+     </td>      
+   
+  </tr> 
+  <% end %>
+  </tbody>
+</table>
+</div>
+<br />
+</div>
+<%= render 'bottom' %>

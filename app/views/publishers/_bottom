@@ -1,0 +1,14 @@
+<br/>
+<br/>
+</center>
+<div id="footer" style="clear:both;text-align:center; color: black;background-color:#FFFFFF">
+Copyright © 2012 Waanisa.com | All rights reserved |
+<%= link_to "Contact us", contact_path %> | <a name="fb_share"></a> 
+<script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
+        type="text/javascript">
+</script>
+ 
+</div>
+
+
+</div>

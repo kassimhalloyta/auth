@@ -1,0 +1,31 @@
+
+<div class="row">
+  <div class="small-8 columns">
+  
+
+ <div id="sisa"  style="font-family: algerian">
+ 
+
+<% if @publisher != nil %>
+<fieldset  >
+<legend  style="font-size:15px; font-family: algerian;text-transform:uppercase;text-shadow: fuchsia 1px 1px;"><marquee behavior="slide"  loop="1" > Ankacisam  : <b><%= @publisher.title %> </b> Abtam : </b><b><%= @publisher.content %></b></marquee></legend>
+<embed type="application/x-shockwave-flash" src="http://dl.dropboxusercontent.com/u/17757917/3523697345-audio-player.swf" flashvars="audioUrl= <%= @publisher.audio.url %> &autoPlay=true" width="80%" height="27" quality="best"></embed>
+
+</div>
+
+<a href="http://www.facebook.com/sharer.php?s= 100&amp;p[title]=AFAR MUSIC : <%=@publisher.title %>&amp;p[url]=http://auth.waanisa.com/publishers/<%=@publisher.id%>&amp;
+
+p[images][0]=https://fbcdn-photos-e-a.akamaihd.net/photos-ak-snc7/v27562/164/214921488654092/app_115_214921488654092_1252492076.png&amp;
+p[summary]= Abtam : <%= @publisher.content %>"></fieldset></div><div id="fb_share_button"><img src='https://secure.citizensforethics.org/page/-/images/buttons/btn_fb_55px.gif' /></div></a>
+
+
+<% if request.env['HTTP_USER_AGENT'].downcase.match(/android|iphone/)%>
+<%= audio_tag(@publisher.audio.url, :autoplay => true, :controls => true  , :type => "audio/mpeg" ) %>
+</div>
+<% end %>
+
+
+<% end %>
+
+
+ </div>

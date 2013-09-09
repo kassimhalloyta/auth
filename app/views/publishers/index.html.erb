@@ -1,0 +1,80 @@
+   
+   <%= render 'head' %>
+   
+ <br/>
+ 
+ <br/>
+ 
+ <br/>
+ 
+ <center>
+ 
+ <%= render 'media' %>
+ 
+ </center> 
+ </div>
+ <br/>
+  <%=link_to  "live " , :controller => "publishers", :action => "live_audio"
+        %>
+
+ <br/>
+
+<%= form_tag( "publishers/live_audio" , :method => "put" )  do  %>
+
+ <br/>
+
+
+ <br/>
+ <div class="row">
+  
+  <div class="large-6 columns">
+</div>
+ <table id='audio_list'   >
+  
+ 
+  <thead>
+     <tr>
+       
+       <th>Nr </th>
+       <th>Title</th>
+       <th>Artist</th>
+       <th>Created At</th>
+       <th>Published by</th>
+       <th></th>    
+      </tr>
+  </thead>
+<tbody>
+
+<% @publishers.each do |publisher| %>
+<tr>
+  
+    <td><%= publisher.id  %></td>
+    <td><%=  publisher.title  %></td>  
+    <td><%= publisher.content %></td>
+    <td><%= l publisher.created_at ,:format => :sample %></td>
+      
+   
+    <td><%= link_to  publisher.user.username %>
+     (<%=  publisher.user.publishers_count%>)
+     </td>
+    <td>     
+     <%= link_to 'Play',  publisher ,:remote => true  %>  
+    
+     </td>      
+   
+  </tr> 
+  <% end %>
+  </tbody>
+</table>
+</div>
+<br />
+</div>
+<%= render 'bottom' %>
+
+  
+  
+  
+
+
+<%= submit_tag "Add to playlist" ,:controller =>'publishers'  ,:action => 'live_audio' ,:id => :audio_ids %>
+<% end %>
