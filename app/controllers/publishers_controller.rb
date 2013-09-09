@@ -4,14 +4,12 @@ class PublishersController < ApplicationController
 
   def index
     if params[:id] != nil
-      
       # @publisher=Publisher.find(params[:id])
-       
-       @publishers =Publisher.order('id DESC').includes(:user)
+     @publishers =Publisher.order('id DESC').includes(:user)
    else
-   
    @publishers =Publisher.order('id DESC').includes(:user) 
    end
+   
    respond_to do |format|
       format.html # index.html.erb 
         format.js {render :layout => false}  
@@ -19,21 +17,11 @@ class PublishersController < ApplicationController
     end   
   end
 
-  def live_audio  
-   @audio=params[:audio_ids]
-   
-    respond_to do |format|
-      format.html # index.html.erb 
-        format.js {render :layout => false}  
-      format.json { render :json => @audio }
-    end  
+  def show 
   
-  end  
-   def show 
-  
-  @publisher=Publisher.find(params[:id])
- 
-  @publishers = Publisher.order('id DESC').includes(:user) 
+   @publisher=Publisher.find(params[:id])
+   @publishers = Publisher.order('id DESC').includes(:user) 
+    
     respond_to do |format|
       format.html # show.html.erb
       format.js 
@@ -62,13 +50,14 @@ class PublishersController < ApplicationController
     def edit
     
     usr_id =Publisher.getPublishersUserId(params[:id])
-  if current_user.id == 1 || usr_id == current_user.id
+    if current_user.id == 1 || usr_id == current_user.id
     @publisher = Publisher.find(params[:id])
-  else
+    else
+   
    respond_to do |format|
       format.html { redirect_to publishers_path, notice: 'u dont have right to edit ! ' }
     end
-end
+  end
 end
     
   
